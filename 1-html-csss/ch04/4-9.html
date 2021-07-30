@@ -1,0 +1,27 @@
+<html lang="ko">
+
+<head>
+  <meta charet="uft-8">
+  <style>
+    #box {
+      /* 요소가 안 보임 */
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <span onclick="showBox();">Show</span>
+  <div id="box">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores totam cum odio inventore sapiente voluptatibus
+    impedit pariatur facilis! Veritatis sequi quo earum aut provident. Excepturi assumenda ipsam temporibus molestiae
+    animi.
+  </div>
+  <script>
+    function showBox() {
+      document.querySelector("#box").style.display = "block";
+    }
+  </script>
+</body>
+
+</html>

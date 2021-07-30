@@ -1,0 +1,64 @@
+<html lang="ko">
+
+<head>
+  <meta charet="uft-8">
+  <style>
+    p {
+      width: 250px;
+      height: 150px;
+      border: 3px solid black;
+    }
+
+    P:nth-child(1) {
+      /* 요소(element)의 크기보다 컨텐츠가 클 때 숨김처림 */
+      /* overflow: 넘침 */
+      /* hidden: 숨김 */
+      overflow: hidden;
+    }
+
+    p:nth-child(2) {
+      overflow: scroll;
+    }
+
+    p:nth-child(3) {
+      overflow-y: scroll;
+    }
+
+    p:nth-child(4) {
+      overflow-y: auto;
+    }
+
+    p:nth-child(5) {
+      overflow: hidden;
+      /* 컨텐츠가 내용 밖으로 넘어서면 말 줄임표(...) */
+      text-overflow: ellipsis;
+      /* 빈공간은 기본적으로 밑으로 내림 */
+      /* 밑으로 안내림, 옆으로 이어짐 */
+      white-space: nowrap;
+      height: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quo voluptas atque error similique mollitia,
+    ipsam doloremque perspiciatis nostrum omnis magni, minima quisquam delectus nemo nihil reprehenderit modi, odit
+    placeat.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ducimus magnam, error hic velit commodi
+    incidunt aliquam architecto voluptatibus dolorem quis ullam sapiente in itaque iusto rem, recusandae voluptate
+    tempore.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aspernatur eaque asperiores incidunt at quae.
+    Provident</p>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam alias impedit iure exercitationem deleniti eligendi
+    veritatis
+  </p>
+  <p title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam alias impedit iure exercitationem deleniti
+  eligendi
+  veritatis dolore enim, praesentium accusantium fugiat suscipit laborum, minus totam quos vel hic cum repudiandae?">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam alias impedit iure exercitationem deleniti
+    eligendi
+    veritatis dolore enim, praesentium accusantium fugiat suscipit laborum, minus totam quos vel hic cum repudiandae?
+  </p>
+</body>
+
+</html>

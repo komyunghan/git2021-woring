@@ -1,0 +1,38 @@
+<html lang="ko">
+
+<head>
+  <meta charet="uft-8">
+  <style>
+    .box {
+      margin: 10px;
+      padding: 10px;
+      width: 250px;
+      height: 200px;
+      border: 1px solid black;
+    }
+
+    .one {
+      background-color: red;
+      /* html, 기본(default)*/
+      box-sizing: content-box;
+    }
+
+    .two {
+      background-color: orange;
+      /* width/heigt가 border포함 안쪽 영역의 크기 */
+      /* box-sizing: border-box; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box one">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, at ipsam placeat suscipit ex
+    obcaecati sequi
+    assumenda iste eum, velit animi atque aliquid error, et illum voluptatibus voluptatem dolore unde.</div>
+  <div class="box two">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam magnam eius doloremque nulla
+    sint
+    placeat,
+    quis ipsam sit natus libero ipsa qui hic, sapiente vero tempore! Dolores nemo in debitis.</div>
+</body>
+
+</html>
