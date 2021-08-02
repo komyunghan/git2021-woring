@@ -18,21 +18,24 @@
     undefined + 1  // NaN
     " \t \n" - 2  // ???
 
-    let a = "" + 1 + 0
-    let b = "" - 1 + 0
-    let c = true + false
-    let d = 6 / "3"
-    let e = "2" * "3"
-    let f = 4 + 5 + "px"
-    let g = "$" + 4 + 5
-    let h = "4" - 2
-    let i = "4px" - 2
-    let j = 7 / 0
-    let k = "  -9  " + 5
-    let l = "  -9  " - 5
-    let m = null + 1
-    let n = undefined + 1
-    let o = " \t \n" - 2
+
+    // + 있는데, 문자열이 껴있음 -> 문자열 결합 될거라고 생각하고 앞에서부터 계산
+    // -, / , * 수학연산으로 계산될거임
+    let a = "" + 1 + 0  // "10", 문자열 결합
+    let b = "" - 1 + 0  // -1, 빈 값은 0 - 1 + 0
+    let c = true + false  // 1, true는 1, false는 0
+    let d = 6 / "3" // 2, 숫자로 변환하여 연산
+    let e = "2" * "3"  // 6, 숫자로 변환하여 연산
+    let f = 4 + 5 + "px" // 9px, 4+5는 숫자 연산, "px"는 문자열 결합
+    let g = "$" + 4 + 5 // "$45", 문자열 결합
+    let h = "4" - 2 // 2, "4"를 숫자로 변환
+    let i = "4px" - 2 // NaN 숫자가 아닌 값과 연산
+    let j = 7 / 0  // Infinity, 0으로 나눌 때는 Infinity
+    let k = "  -9  " + 5 // "   -9  5  ", 문자열 결합
+    let l = "  -9  " - 5 // -14, 앞뒤 빈공간을 제거하고 연산
+    let m = null + 1 // 1, null은 0 0 + 1
+    let n = undefined + 1 // NaN, undefined는 NaN
+    let o = " \t \n" - 2 // -2, 빈문자열(\t:탭(2칸~8칸))은 0 - 2
 
     console.log(a);
     console.log(b);
