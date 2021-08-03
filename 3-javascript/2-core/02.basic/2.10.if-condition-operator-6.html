@@ -1,0 +1,18 @@
+<html>
+
+<body>
+  <script>
+    let login = prompt('나이를 입력해주세요.', 18);
+
+    let message =
+      (login == '직원')
+        ? '안녕하세요.'
+        : (login == '임원')
+          ? '환영합니다.'
+          : (login == '')
+            ? '로그인이 필요합니다.'
+            : '';
+  </script>
+</body>
+
+</html>
