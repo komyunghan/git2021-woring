@@ -1,0 +1,25 @@
+<html>
+
+<body>
+  <script>
+    let salaries = {
+      John: 100,
+      Ann: 160,
+      Pete: 130
+    }
+
+    // 속성값 합산 구하기
+
+    // 외부에 합살한 변수를 생성
+    // 반복문 내부에 만들면 반복문이 실핼될 때 마다 새로 초기화 됨
+    let sum = 0;
+    for (let prop in salaries) {
+      console.log(prop);  // <-- 이것은 위에 for문이 어떤 기능을 해주는지 보기 위해 넣은 코드임
+      sum += salaries[prop];
+    }
+
+    console.log(sum);
+  </script>
+</body>
+
+</html>
