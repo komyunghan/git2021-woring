@@ -2,7 +2,17 @@
 
 <body>
   <script>
+    // 컨텍스트()
+    function makeUser() {
+      return {
+        name: "John",
+        ref: this
+      };
+    };
 
+    let user = makeUser();
+
+    alert(user.ref.name); // 결과가 어떻게 될까요?
   </script>
 </body>
 
