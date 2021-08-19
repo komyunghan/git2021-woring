@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+// 모듈: 부분 코드
+// App.tsx 모듈을 가져오고 App이름으로 선언함
+import App from './App'; // App.tsx
+
 import reportWebVitals from './reportWebVitals';
 
+// id가 root인 요소에 App 컴포넌트를 랜더링함
+// 컴포넌트(component): 부분 UI, 기능 포함
+// 템플릿(template): 부분 UI, UI구조만 가짐
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App /> {/* */}
   </React.StrictMode>,
   document.getElementById('root')
 );
