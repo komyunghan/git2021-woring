@@ -1,4 +1,4 @@
-/ Button 컴포넌트 생성
+// Button 컴포넌트 생성
 // <button ... JSX 엘리먼트를 반환하는 컴포넌트
 
 import React from "react";
