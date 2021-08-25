@@ -121,7 +121,7 @@ const Todo = () => {
     setTodoList(
       produce((state) => {
         // 해당 id값에 해당하는 요소를 찾음
-        const item = state.find((item) => item.id === id);
+        const item = state.find((item: { id: number; }) => item.id === id);
         if (item) {
           item.isEdit = mod;
         }
@@ -152,7 +152,7 @@ const Todo = () => {
     // immer를 사용하여 해당 요소를 직접변경
     setTodoList(
       produce((state) => {
-        const item = state.find((item) => item.id === id);
+        const item = state.find((item: { id: number; }) => item.id === id);
         if (item) {
           item.memo = input?.value;
           item.modifyTime = new Date().getTime();

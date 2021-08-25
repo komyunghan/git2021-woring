@@ -67,7 +67,7 @@ const Todo = () => {
     console.log(editItem);
     setTodoList(
       produce((state) => {
-        const item = state.find((item) => item.id === editItem.id);
+        const item = state.find((item: { id: number; }) => item.id === editItem.id);
         if (item) {
           item.memo = editItem.memo;
         }
