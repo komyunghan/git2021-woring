@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FeedState } from "./type";
 
 // { 함수속성 }
@@ -14,13 +14,28 @@ interface ModalProp {
 
 const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  // eslint-disable-next-line
-  const dataUrl = useRef<HTMLInputElement>(null);
-  const save = () => {
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const [url, setUrl] = useState(item.dataUrl)
+
+  const changeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.length) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setUrl(reader.result?.toString());
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const save = (Url: string | undefined) => {
     const feed: FeedState = {
       id: item.id,
+      content: textRef.current?.value,
       createTime: item.createTime,
-      dataUrl: inputRef.current?.value,
+      dataUrl: Url
     };
 
     onSave(feed);
@@ -31,7 +46,6 @@ const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
       className="modal d-block"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       onClick={() => {
-        onClose();
       }}
     >
       <div className="modal-dialog">
@@ -47,38 +61,58 @@ const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
               }}
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body" key={item.id}>
+            {item.fileType &&
+              (item.fileType?.includes("image") ? (
+                <img
+                  src={url}
+                  className="card-img-top"
+                  alt={item.content}
+                />
+              ) : (
+                <video className="card-img-top"
+                  controls src={item.dataUrl}
+                />
+              ))}
+            <textarea
+              className="form-control mb-1"
+              placeholder="Leave a post here"
+              style={{ boxSizing: "border-box", height: "15vh" }}
+              defaultValue={item.content}
+              ref={textRef}
+            />
             <input
-              type="text"
-              defaultValue={item.dataUrl}
-              className="w-100"
+              type="file"
+              className="form-control me-1"
+              accept="image/png, image/jpeg, video/mp4"
+              onChange={(e) => {
+                changeImage(e);
+              }}
               ref={inputRef}
             />
           </div>
           <div className="modal-footer">
-            <button
-              type="button"
+            <button type="button"
               className="btn btn-secondary"
+              data-bs-dismiss="modal"
               onClick={() => {
                 onClose();
               }}
-            >
-              닫기
-            </button>
-            <button
-              type="button"
+            >닫기</button>
+            <button type="button"
               className="btn btn-primary"
               onClick={() => {
-                save();
+                save(url);
               }}
-            >
-              저장
-            </button>
+            >저장</button>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 };
+
+
+
 
 export default FeedEditModal;

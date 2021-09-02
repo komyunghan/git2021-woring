@@ -9,15 +9,15 @@ interface ContactState {
   memo1: string | undefined;
   memo2: string | undefined;
   memo3: string | undefined;
+  isEdit?: boolean; // 수정모드인지 여부
   createTime: number;
 }
-// eslint-disable-next-line
-const getTimeString = (unixtime: number) => {
-  // Locale: timezone, currency 등
-  // js에서는 브라우저의 정보를 이용함
-  const dateTime = new Date(unixtime);
-  return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
-};
+// const getTimeString = (unixtime: number) => {
+//   // Locale: timezone, currency 등
+//   // js에서는 브라우저의 정보를 이용함
+//   const dateTime = new Date(unixtime);
+//   return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
+// };
 const Contact = () => {
 
 

@@ -1,16 +1,12 @@
 import { useRef, useState } from "react";
+import produce from "immer";
+import style from "../profile/Profile.module.scss";
 // import { lorem, penguin, robot } from "../common/data";
 // import { getTimeString } from "../common/lib/string";
-
-interface FeedState {
-  id: number;
-  content?: string | undefined;
-  dataUrl?: string | undefined;
-  fileType?: string | undefined;
-  createTime: number;
-  modifyTime?: number;
-  isEdit?: boolean;
-}
+import FeedEditModal from "./FeedEditModal";
+import { FeedState } from "./type";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const getTimeString = (unixtime: number) => {
   // Locale: timezone, currency 등
@@ -20,12 +16,12 @@ const getTimeString = (unixtime: number) => {
 };
 
 const Feed = () => {
+  const profile = useSelector((state: RootState) => state.profile);
   const [feedList, setFeedList] = useState<FeedState[]>([]);
-
   const textRef = useRef<HTMLTextAreaElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-
+  const [isEdit, setIsEdit] = useState(false);
   const add = (e: React.KeyboardEvent<HTMLInputElement> | null) => {
     if (e) {
       if (e.code !== "Enter") return;
@@ -56,6 +52,9 @@ const Feed = () => {
       // optional chaning
       content: textRef.current?.value,
       dataUrl: dataUrl,
+      memo: textRef.current?.value,
+      username: profile.username,
+      image: profile.image,
       fileType: fileType,
       createTime: new Date().getTime(),
     };
@@ -70,9 +69,49 @@ const Feed = () => {
     setFeedList(feedList.filter((item) => item.id !== id));
   };
 
+  const editItem = useRef<FeedState>({
+    id: 0,
+    content: "",
+    dataUrl: "",
+    createTime: 0,
+    username: profile.username,
+    image: profile.image,
+  });
+
+  const edit = (item: FeedState) => {
+    // 수정할 todo객체
+    editItem.current = item;
+    // 모달 팝업을 보여주기
+    setIsEdit(true);
+  };
+  const save = (editItem: FeedState) => {
+    console.log(editItem);
+    setFeedList(
+      produce((state) => {
+        const item = state.find((item: { id: number; }) => item.id === editItem.id);
+        if (item) {
+          item.content = editItem.content
+          item.dataUrl = editItem.dataUrl;
+        }
+      })
+    );
+    // 모달창 닫기
+    setIsEdit(false);
+  };
   return (
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center my-5">Feeds</h2>
+      {isEdit && (
+        <FeedEditModal
+          item={editItem.current}
+          onClose={() => {
+            setIsEdit(false);
+          }}
+          onSave={(editItem) => {
+            save(editItem);
+          }}
+        />
+      )}
       <form
         className="mt-5"
         onSubmit={(e) => {
@@ -107,6 +146,16 @@ const Feed = () => {
       <div className="mt-3">
         {feedList.map((item) => (
           <div className="card mt-1" key={item.id}>
+            <div className="card-header">
+              <div>
+                <img
+                  className={`${style.thumb} me-1`}
+                  src={item.image}
+                  alt={item.username}
+                />
+                <span>{item.username}</span>
+              </div>
+            </div>
             {item.fileType &&
               (item.fileType?.includes("image") ? (
                 <img
@@ -121,19 +170,27 @@ const Feed = () => {
               <p className="card-text">{item.content}</p>
               <div className="d-flex">
                 <div className="w-100">
-                  <span className="text-secondary">
-                    {getTimeString(
-                      item.modifyTime ? item.modifyTime : item.createTime
-                    )}
+                  <span style={{ fontSize: "0.75rem" }}>
+                    {item.username}, {getTimeString(item.createTime)}
                   </span>
                 </div>
                 <a
                   href="#!"
                   onClick={(e) => {
                     e.preventDefault(); // 기본 동작 방지
+                    edit(item);
+                  }}
+                  className="btn btn-outline-secondary btn-sm text-nowrap me-1"
+                >
+                  수정
+                </a>
+                <a
+                  href="#!"
+                  onClick={(e) => {
+                    e.preventDefault(); // 기본 동작 방지
                     del(item.id);
                   }}
-                  className="link-secondary fs-6 text-nowrap"
+                  className="btn btn-outline-secondary btn-sm text-nowrap me-1"
                 >
                   삭제
                 </a>
