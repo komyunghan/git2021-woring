@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// import { penguin } from "../../common/data";
 
 // - 목록조회: 4열 그리드화면으로 목록조회(프로필, 타이틀, 이미지)
 // - 사진추가: 추가버튼으로 제목, 설명, 이미지파일 선택 후 추가, 목록버튼
@@ -6,8 +7,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // 데이터구조를 interface로 만듦
 export interface PhotoItem {
   id: number;
-  profileUrl: string;
-  username: string;
   title: string;
   description?: string;
   photoUrl: string;
@@ -23,8 +22,7 @@ interface PhotoState {
 
 // photo state를 목록 -> array
 const initialState: PhotoState = {
-  data: [
-  ],
+  data: [],
   isFetched: false,
 };
 
@@ -66,10 +64,19 @@ const photoSlice = createSlice({
         photoItem.fileType = modifyItem.fileType;
       }
     },
+    // payload값으로 state를 초기화하는 reducer 필요함
+    initialPhoto: (state, action: PayloadAction<PhotoItem[]>) => {
+      const photos = action.payload;
+      // 백엔드에서 받아온 데이터
+      state.data = photos;
+      // 데이터를 받아옴으로 값을 남김
+      state.isFetched = true;
+    },
   },
 });
 
-// action creator 내보내기: action creator는 action객체를 변환하는 함수
-export const { addPhoto, removePhoto, modifyPhoto } = photoSlice.actions;
+// action creator 내보내기: action creator는 action객체를 반환하는 함수
+export const { addPhoto, removePhoto, modifyPhoto, initialPhoto } =
+  photoSlice.actions;
 
 export default photoSlice.reducer;

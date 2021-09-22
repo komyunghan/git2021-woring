@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { addContact, ContactItem } from "./ContactSlice";
+import { ContactItem } from "./ContactSlice";
 
 const ContactCreate = () => {
   // 입력 폼 ref 객체
@@ -37,9 +37,8 @@ const ContactCreate = () => {
     };
     console.log(item)
 
-    dispatch(addContact(item));
-
-    history.push("/contact")
+    // dispatch(requestAddContact(item));
+    history.push("/contacts")
   };
 
   return (

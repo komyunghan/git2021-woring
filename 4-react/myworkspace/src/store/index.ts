@@ -1,17 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import profileReducer from "../features/profile/profileSlice";
-import photoReducer from "../features/photo/PhotoSlice";
-import contactReducer from "../features/contact/ContactSlice"
+import photoReduer from "../features/photo/photoSlice";
+import contactReducer from "../features/contact/ContactSlice";
 
 // 최상위 사가
 import rootSaga from "../saga";
 import createSagaMiddleware from "@redux-saga/core";
 
 // saga middleware 생성
-// middleware: 중간에 뭔가를 처리하는 소프트웨어
-// redux saga는 redux 상태처리 전/후에 뭔가를 해주는 라이브러리
+// middleware: 중간에 먼가를 처리하는 소프트웨어
+// redux saga는 redux 상태처리 전/후에 먼가를 해주는 라이브러리
 const sagaMiddleware = createSagaMiddleware();
-
 
 // global state(전역 상태) 저장소 만듦
 // global state: profile, todo, contact .... 여러개 state가 있음
@@ -22,33 +21,32 @@ export const store = configureStore({
     // state이름: reducer이름
     // profile state 처리하는 reducer를 등록
     profile: profileReducer,
-    // photos state 처리하는 reducer를 등록
-    photo: photoReducer,
+    // photo state를 처리하는 reducer를 등록
+    photo: photoReduer,
     contact: contactReducer,
   },
   // redux store(dispatcher)에 미들웨어 적용
-  // middleware는 여러개 사용할 수 있음, [defaultMiddleware, sagaMiddleware, thunkMiddleware]
+  // middleware는 여러개 사용할 수 있음, [defaultMiddlware, sagaMiddleware, thunkMiddlware]
   middleware: [sagaMiddleware],
   devTools: true, // 개발툴 사용여부
 });
 
 // Redux
 /*
- component -> dispatch(reduxAction)
-  -> dispatcher -> reducer -> store/state
+ comp -> dispatch(reduxAction) 
+   -> dispatcher -> reducer -> store/state
 */
 
 // Redux-Saga
 /*
- component -> dispatch(sagaAction)
-  -> dispatcher -> saga -> api(서버연동) -> put(reduxAction)   <-- Redux와 비교했을때 다른부분(추가단계)
-  -> diapatcher -> reducer -> store/state
+ comp -> dispatch(sagaAction) 
+   -> dispatcher -> saga -> api(서버연동) -> put(reduxAction) (추가단계)
+     -> dispatcher -> reducer -> store/state
 */
 
 // saga middleware를 실행
-// rootSaga와 하위에 정의한 감지(take)할 Saga Actions들에 대해서 감지 시작
+// rootSaga와 하위에 정의한 감지(take)할 Saga Action들에 대해서 감지 시작
 sagaMiddleware.run(rootSaga);
-
 
 // typesciprt에서는 몇가지 타입 선언을 해야함
 

@@ -1,11 +1,14 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
+import { requestFetchContacts } from "./contactSaga";
 
 const Contact = () => {
   // Contact state 전체를 가져옴
   const Contact = useSelector((state: RootState) => state.contact);
   const history = useHistory();
+  const dispatch = useDispatch<AppDispatch>();
   const getTimeString = (unixtime: number) => {
     const day = 24 * 60 * 60 * 1000;
     const dateTime = new Date(unixtime);
@@ -13,6 +16,11 @@ const Contact = () => {
       ? dateTime.toLocaleDateString()
       : dateTime.toLocaleTimeString();
   };
+  useEffect(() => {
+    if (!Contact.isFetched) {
+      dispatch(requestFetchContacts());
+    }
+  }, [dispatch, Contact.isFetched]);
 
   return (
     <div style={{ width: "40vw" }} className="mx-auto">

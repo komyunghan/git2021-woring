@@ -51,21 +51,23 @@ const contactSlice = createSlice({
       );
     },
     modifyContact: (state, action: PayloadAction<ContactItem>) => {
-      // 생성해서 넘긴 객체
       const modifyItem = action.payload;
-      // state에 있는 객체
-      const ContactItem = state.data.find((item) => item.id === modifyItem.id);
-      // state에 있는 객체의 속성을 넘김 객체의 속성으로 변경
-      if (ContactItem) {
-        ContactItem.description = modifyItem.description;
-        ContactItem.name = modifyItem.name;
-        ContactItem.phone = modifyItem.phone;
-        ContactItem.email = modifyItem.email;
+      const contactItem = state.data.find((item) => item.id === modifyItem.id);
+      if (contactItem) {
+        contactItem.name = modifyItem.name;
+        contactItem.phone = modifyItem.phone;
+        contactItem.email = modifyItem.email;
       }
     },
+    initialContact: (state, action: PayloadAction<ContactItem[]>) => {
+      const contacts = action.payload;
+      state.data = contacts;
+      state.isFetched = true;
+    }
   },
 });
 
-export const { addContact, removeContact, modifyContact } = contactSlice.actions;
+export const { addContact, removeContact, modifyContact, initialContact } =
+  contactSlice.actions;
 
 export default contactSlice.reducer;

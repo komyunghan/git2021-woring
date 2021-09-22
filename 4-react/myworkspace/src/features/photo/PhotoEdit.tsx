@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { modifyPhoto } from "./PhotoSlice";
+import { modifyPhoto } from "./photoSlice";
 
 const PhotoEdit = () => {
   // ------ 데이터를 가져오거나 변수를 선언하는 부분 --------
