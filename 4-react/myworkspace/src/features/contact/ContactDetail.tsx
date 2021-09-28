@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { removeContact } from "./ContactSlice";
+import { removeContact } from "./contactSlice";
 
 const ContactDetail = () => {
   // useParam<타입>(), 매개변수들을 객체화할 형식을 제너릭으로 넣어줌
@@ -24,7 +24,7 @@ const ContactDetail = () => {
 
   const handDeleteClick = () => {
     dispatch(removeContact(+id)); // id값만 넣어서 삭제
-    history.push("/contact"); // 목록화면으로 이동
+    history.push("/contacts"); // 목록화면으로 이동
   };
 
   return (
@@ -59,7 +59,7 @@ const ContactDetail = () => {
           <button
             className="btn btn-secondary me-1"
             onClick={() => {
-              history.push("/contact");
+              history.push("/contacts");
             }}
           >
             <i className="bi bi-grid-3x3-gap me-1"></i>
@@ -70,7 +70,7 @@ const ContactDetail = () => {
           <button
             className="btn btn-primary me-1"
             onClick={() => {
-              history.push(`/contact/edit/${id}`);
+              history.push(`/contacts/edit/${id}`);
             }}
           >
             <i className="bi bi-pencil me-1" />

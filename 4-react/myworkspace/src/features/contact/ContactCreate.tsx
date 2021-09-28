@@ -2,7 +2,8 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { ContactItem } from "./ContactSlice";
+import { requestAddContact } from "./contactSaga";
+import { ContactItem } from "./contactSlice";
 
 const ContactCreate = () => {
   // 입력 폼 ref 객체
@@ -37,7 +38,9 @@ const ContactCreate = () => {
     };
     console.log(item)
 
-    // dispatch(requestAddContact(item));
+    // dispatch(addContact(item));
+    dispatch(requestAddContact(item));
+
     history.push("/contacts")
   };
 
@@ -82,7 +85,7 @@ const ContactCreate = () => {
         <button
           className="btn btn-secondary float-start"
           onClick={() => {
-            history.push("/contact");
+            history.push("/contacts");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>

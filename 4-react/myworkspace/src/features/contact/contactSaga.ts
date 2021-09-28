@@ -1,6 +1,6 @@
-import contactReducer, { addContact, initialContact } from "./ContactSlice";
+import contactReducer, { addContact, initialContact } from "./contactSlice";
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
-import { ContactItem } from "./ContactSlice";
+import { ContactItem } from "./contactSlice";
 import { call, put, takeEvery, takeLatest } from "@redux-saga/core/effects";
 import api, { ContactItemRequest, ContactItemResponse } from "./contactApi";
 import { AxiosResponse } from "axios";

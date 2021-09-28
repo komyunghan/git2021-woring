@@ -29,7 +29,7 @@ const Contact = () => {
         <button
           className="btn btn-primary text-nowrap"
           onClick={() => {
-            history.push("/contact/create");
+            history.push("/contacts/create");
           }}
         >
           <i className="bi bi-plus" />
@@ -54,19 +54,19 @@ const Contact = () => {
                 <th
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    history.push(`/contact/detail/${item.id}`);
+                    history.push(`/contacts/detail/${item.id}`);
                   }}
                 >{item.name}</th>
                 <th
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    history.push(`/contact/detail/${item.id}`);
+                    history.push(`/contacts/detail/${item.id}`);
                   }}
                 >{item.phone}</th>
                 <th
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    history.push(`/contact/detail/${item.id}`);
+                    history.push(`/contacts/detail/${item.id}`);
                   }}
                 >{item.email}</th>
                 <th className="text-secondary">{getTimeString(

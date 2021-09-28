@@ -11,6 +11,8 @@ import { store } from "./store"; // redux store
 
 import Home from "./features/Home";
 import Profile from "./features/profile/Profile";
+import Progress from "./components/progress/Progress";
+import AlertStack from "./components/alert/AlertStack";
 
 // SPA(Single Page Application)
 // : 페이지 파일이 1개, index.html
@@ -84,6 +86,9 @@ function App() {
                 <Route path="/contacts/edit/:id" component={ContactEdit} />
               </Switch>
             </Suspense>
+
+            <Progress />
+            <AlertStack />
           </main>
         </div>
       </Router>

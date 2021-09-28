@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { modifyContact } from "./ContactSlice";
+import { modifyContact } from "./contactSlice";
 
 const ContactEdit = () => {
   // ------ 데이터를 가져오거나 변수를 선언하는 부분 --------
@@ -31,7 +31,7 @@ const ContactEdit = () => {
       item.description = descTxta.current ? descTxta.current.value : "";
 
       dispatch(modifyContact(item));
-      history.push("/contact")
+      history.push("/contacts")
     };
   }
   return (
@@ -91,7 +91,7 @@ const ContactEdit = () => {
         <button
           className="btn btn-secondary me-1 float-start"
           onClick={() => {
-            history.push("/contact");
+            history.push("/contacts");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>
