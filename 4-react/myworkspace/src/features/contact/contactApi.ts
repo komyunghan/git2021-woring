@@ -6,12 +6,14 @@ export interface ContactItemResponse {
   name: string;
   phone: string;
   email: string;
+  description: string;
 }
 
 export interface ContactItemRequest {
   name: string | undefined;
   phone: string | undefined;
   email: string | undefined;
+  description: string | undefined;
 }
 
 const contactApi = {

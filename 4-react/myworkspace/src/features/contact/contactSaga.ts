@@ -29,6 +29,7 @@ function* addData(action: PayloadAction<ContactItem>) {
     name: contactItemPayload.name,
     phone: contactItemPayload.phone,
     email: contactItemPayload.email,
+    description: contactItemPayload.description
   };
 
   // ------ 1. rest api에 post로 데이터 보냄
@@ -53,6 +54,7 @@ function* addData(action: PayloadAction<ContactItem>) {
     name: result.data.name,
     phone: result.data.phone,
     email: result.data.email,
+    description: result.data.description,
     createdTime: result.data.createdTime,
   };
 
@@ -78,6 +80,7 @@ function* fetchData() {
       name: item.name,
       phone: item.phone,
       email: item.email,
+      description: item.description,
       createdTime: item.createdTime,
     } as ContactItem)
   );

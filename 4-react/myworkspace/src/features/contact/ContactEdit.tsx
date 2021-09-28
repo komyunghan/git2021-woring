@@ -79,8 +79,8 @@ const ContactEdit = () => {
                 <textarea
                   className="form-control"
                   style={{ height: "40vh" }}
-                  defaultValue={contactItem?.description}
                   ref={descTxta}
+                  defaultValue={contactItem?.description}
                 ></textarea>
               </td>
             </tr>

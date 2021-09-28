@@ -9,7 +9,7 @@ export interface ContactItem {
   name: string;
   phone: string;
   email: string;
-  description?: string;
+  description: string;
   modifyTime?: number;
   createdTime: number;
 }
@@ -57,6 +57,7 @@ const contactSlice = createSlice({
         contactItem.name = modifyItem.name;
         contactItem.phone = modifyItem.phone;
         contactItem.email = modifyItem.email;
+        contactItem.description = modifyItem.description;
       }
     },
     initialContact: (state, action: PayloadAction<ContactItem[]>) => {
