@@ -2,3 +2,8 @@
 
 
 scp -i "myworkspace.pem" -r ./build/* ubuntu@ec2-3-38-98-212.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/myworkspace
+
+
+scp -i "c:\keyfile\myworkspace.pem" -r ./build/libs/*.jar ubuntu@ec2-3-38-98-212.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/myworkspace
+
+
