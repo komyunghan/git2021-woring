@@ -34,7 +34,6 @@ public class CovidSidoDailyResponse {
 	public class Item {
 		// OLAP Cube 형식으로 데이터
 		// 지역, 카테고리, 시간, 값
-		
 		// 기준시간
 		private String stdDay;
 		// 도시명

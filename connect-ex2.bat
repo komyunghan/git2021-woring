@@ -1,0 +1,1 @@
+ssh -i "c:\keyfile\myworkspaceee.pem" ubuntu@ec2-3-34-131-92.ap-northeast-2.compute.amazonaws.com

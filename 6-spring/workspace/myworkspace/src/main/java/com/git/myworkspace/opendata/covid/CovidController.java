@@ -43,7 +43,7 @@ public class CovidController {
 
 		// 여러개의 필드로 정렬
 		List<Order> orders = new ArrayList<Order>();
-		orders.add(new Order(Sort.Direction.DESC, "StdDay"));
+		orders.add(new Order(Sort.Direction.DESC, "stdDay"));
 		orders.add(new Order(Sort.Direction.ASC, "gubun"));
 
 		return repo.findAll(PageRequest.of(0, 19, Sort.by(orders))).toList();
@@ -58,8 +58,8 @@ public class CovidController {
 
 	@Cacheable(value = cachName, key = "#gubun")
 	@GetMapping(value = "/sido/current/{gubun}")
-	public List<CovidSidoDaily> getCovidSidoCurrent(@PathVariable String city) {
-		Pageable page = PageRequest.of(0, 14, Sort.by("dataTime").descending());
-		return repo.findByGubun(page, city);
+	public List<CovidSidoDaily> getCovidSidoCurrent(@PathVariable String gubun) {
+		Pageable page = PageRequest.of(0, 14, Sort.by("stdDay").descending());
+		return repo.findByGubun(page, gubun);
 	}
 }

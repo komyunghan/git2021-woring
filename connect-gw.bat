@@ -1,0 +1,1 @@
+ssh -i "c:\keyfile\registry.pem" ubuntu@ec2-13-209-96-55.ap-northeast-2.compute.amazonaws.com

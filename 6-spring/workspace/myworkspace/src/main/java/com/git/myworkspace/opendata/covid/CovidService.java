@@ -30,16 +30,17 @@ public class CovidService {
 		this.repo = repo;
 	}
 
-	@Scheduled(cron = "0 5 9 * * *")
+	@Scheduled(cron = "0 40 12 * * *")
+//	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
 	@CacheEvict(value = "covid-current", allEntries = true)
 	@SuppressWarnings("deprecation")
 	public void requestCovidSidoDaily() throws IOException {
 		System.out.println(new Date().toLocaleString());
 		StringBuilder builder = new StringBuilder();
-		builder.append("http://openapi.data.go.kr/openapi");
-		builder.append("/service/rest");
-		builder.append("/Covid19/getCovid19SidoInfStateJson");
-		builder.append("?serviceKey=" + SERVICE_KEY);
+		builder.append("http://openapi.data.go.kr/openapi"); // 호스트/게이트웨이
+		builder.append("/service/rest"); // 서비스
+		builder.append("/Covid19/getCovid19SidoInfStateJson"); // 기능
+		builder.append("?serviceKey=" + SERVICE_KEY); // 서비스키
 
 		System.out.println(builder.toString());
 

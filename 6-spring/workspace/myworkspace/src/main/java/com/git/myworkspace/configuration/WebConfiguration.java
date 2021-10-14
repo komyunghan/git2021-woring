@@ -20,7 +20,7 @@ public class WebConfiguration implements WebMvcConfigurer {
         	.allowedOrigins(
         			"http://localhost:3000", 
         			"http://127.0.0.1:5500/",
-        			"http://ec2-52-79-178-68.ap-northeast-2.compute.amazonaws.com")
+        			"http://ec2-3-34-131-92.ap-northeast-2.compute.amazonaws.com")
         	// 공유정책으로 허용할 HTTP메서드
         	.allowedMethods("*");  // 전체메서드를 허용(GET, POST, PUT....)
     }

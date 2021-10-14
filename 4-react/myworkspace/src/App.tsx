@@ -13,6 +13,7 @@ import Home from "./features/home/Home";
 import Profile from "./features/profile/Profile";
 import Progress from "./components/progress/Progress";
 import AlertStack from "./components/alert/AlertStack";
+import EventMessage from "./components/EventMessage";
 
 // SPA(Single Page Application)
 // : 페이지 파일이 1개, index.html
@@ -24,7 +25,7 @@ import AlertStack from "./components/alert/AlertStack";
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./features/todo/TodoInlineEdit"));
 const Feed = lazy(() => import("./features/feed/Feed"));
-const Photo = lazy(() => import("./features/photo/Photo"));
+const Photo = lazy(() => import("./features/photo/PhotoNext"));
 const PhotoCreate = lazy(() => import("./features/photo/PhotoCreate"));
 const PhotoDetail = lazy(() => import("./features/photo/PhotoDetail"));
 const PhotoEdit = lazy(() => import("./features/photo/PhotoEdit"));
@@ -89,6 +90,7 @@ function App() {
 
             <Progress />
             <AlertStack />
+            <EventMessage />
           </main>
         </div>
       </Router>
