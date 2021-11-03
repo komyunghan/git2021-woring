@@ -17,30 +17,23 @@ a {
 }
 
 .table {
-  display: table;
-  padding-left: 35%;
-  padding-top: 100rem;
+  display: block;
+  margin-left: 23rem;
 }
-table, td, th {
-  padding-left: 30%;
-  padding-top: 50%;
-  border-collapse : collapse;
-  /* border : 1px solid black; */
-};
+
+.searchBar {
+  display: block;
+  size: 1000px;
+  width: 100%;
+}
+
 /* .searchBar_inner {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 } */
 
-.transPatner {
+/* .transPatner {
 position:relative;
-}
+} */
 
-.transButton {
- /* position:absolute; */
- margin-left: 57rem;
- margin-top:36rem;
- bottom: 0;
- right: 0;
-}

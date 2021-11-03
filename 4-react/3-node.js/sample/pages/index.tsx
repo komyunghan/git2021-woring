@@ -1,9 +1,21 @@
 import Layout from "../components/layout";
+import Link from "next/link";
+import GoogleMaps from "./MapAPI";
 import { useRouter } from "next/router";
+import { getTimeString } from "../lib/string";
+
+import photoApi from "../api/photo";
+import { PhotoItemResponse } from "../api/photo";
+
+import Image from "next/image";
+import { mapToStyles } from "@popperjs/core/lib/modifiers/computeStyles";
+
+interface IndexProp {
+  photos: PhotoItemResponse[];
+}
 
 
-
-const Index = () => {
+const Index = ({ photos }: IndexProp) => {
   const router = useRouter();
 
   return (
@@ -12,8 +24,8 @@ const Index = () => {
         <tr>
           <td>
             <th>
-              <div className="searchBar">
-                <input type={"text"} className={"input-sm"} />
+              <div className={"searchBar"}>
+                <input type={"search"} className={"input-sm"} />
               </div>
             </th>
             <th>
@@ -21,18 +33,14 @@ const Index = () => {
                 <button>검색</button>
               </div>
             </th>
-            <th>
-              <div className="bookmarkButton">
-                <button>즐겨찾기</button>
-              </div>
-            </th>
           </td>
         </tr>
-      </table >
-      <div className="transPatner">
-        <button className="transButton">파트너</button>
+      </table>
+      <div>
+        <GoogleMaps></GoogleMaps>
       </div>
-    </Layout >
+    </Layout>
+
   );
 };
 
