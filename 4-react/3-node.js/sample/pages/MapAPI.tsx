@@ -5,7 +5,7 @@ import {
   Marker,
 } from "react-google-maps";
 
-const defaultCenter = { lat: 27.5, lng: 127 };
+const defaultCenter = { lat: 37.49786231683385, lng: 127.02735516129869 };
 
 const defaultOptions = { scrollwheel: false };
 
@@ -28,10 +28,11 @@ const mapElementStyle = { height: "100%" };
 export default function GoogleMaps() {
   return (
     <RegularMap
-      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJgwvzzVwEfoZNvQpq3Yh-taVt-PMq6Vc"
+      googleMapURL="apikey"
       loadingElement={<div style={loadingElementStyle} />}
       containerElement={<div style={containerElementStyle} />}
       mapElement={<div style={mapElementStyle} />}
+
     />
   );
 }
