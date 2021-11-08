@@ -1,0 +1,32 @@
+{
+  "booking_information": {
+    "room_id": 1,
+    "title": "[New 오픈] 마리따 m01,바닷가바로 앞, 커플펜션,조용한마을,곽지,협재 인근",
+    "room_picture": "https://a0.muscache.com/im/pictures/dea004da-ce7c-4b96-8ded-788ef3168349.jpg",
+    "check_in_time": "15:00:00",
+    "check_out_time": "11:00:00",
+    "place_type": "집 전체",
+    "guest_total": 3,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "check_in_date": "2020-06-20",
+    "check_out_date": "2020-06-23",
+    "price": "47395",
+    "currency": "KRW",
+    "discount_rate": 0.3,
+    "rules": "hello",
+    "overall_rating": 4.8,
+    "num_reviews": 95,
+    "host_name": "홍현경",
+    "host_avatar": "https://t1.daumcdn.net/cfile/tistory/99F5D13359BAD8271A",
+    "profile_header": "프론트 현경입니다.",
+    "user_since": "2020",
+    "payment_methods": [
+      "credit_card_visa",
+      "credit_card_master",
+      "credit_card_amex",
+      "paypal"
+    ]
+  }
+}

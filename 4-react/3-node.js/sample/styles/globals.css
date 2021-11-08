@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0 auto;
-  width: 1000px;
+  width: 480px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -21,19 +21,8 @@ a {
   margin-left: 23rem;
 }
 
-.searchBar {
-  display: block;
-  size: 1000px;
-  width: 100%;
+
+
+.appbar {
+  width: 480px;
 }
-
-/* .searchBar_inner {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-} */
-
-/* .transPatner {
-position:relative;
-} */
-

@@ -12,13 +12,13 @@ const AppBar = () => {
           </Link>
         </Navbar.Brand>
         <div className="d-flex justify-content-end me-3">
-          <a className="text-light" href="/about">
+          <a className="text-light" href="/">
             HOME
           </a>
           <Nav className="me-auto">
             <Nav.Link>
-              <Link href="/about">
-                <a href="/about" className="text-light">
+              <Link href="/partner">
+                <a href="/partner" className="text-light">
                   PARTNER
                 </a>
               </Link>

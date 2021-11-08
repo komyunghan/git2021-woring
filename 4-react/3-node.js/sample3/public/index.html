@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <script src=“https://kit.fontawesome.com/72b94ba6d0.js” crossorigin=“anonymous”></script>
+  <!-- 구글 로그인 -->
+  <script>
+    function init() {
+      gapi.load("auth2", function () {
+        window.gauth = gapi.auth2.init({
+          client_id:
+            "515529931906-c9va4d88rfupqbr81mi9se4jjbmvkm6o.apps.googleusercontent.com",
+        });
+        // gauth.then(
+        //   function () {
+        //     console.log("구글 auth2 로드 성공");
+        //     if (gauth.isSignedIn.get()) {
+        //       console.log("구글 로그인 상태");
+        //     } else {
+        //       console.log("구글 로그아웃 상태");
+        //     }
+        //   },
+        //   function () {
+        //     console.log("구글 auth2 로드 실패");
+        //   }
+        // );
+      });
+    }
+  </script>
+  <!-- 페이스북 로그인 -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        //2. 페이스북 sdk 초기화
+        appId: "886952861818583",
+        cookie: true, // Enable cookies to allow the server to access the session.
+        xfbml: true, // Parse social plugins on this webpage.
+        version: "v7.0", // Use this Graph API version for this call.
+      });
+
+      FB.getLoginStatus(function (response) {
+        console.log("페이스북  로그인여부", response);
+        // Called after the JS SDK has been initialized.
+        statusChangeCallback(response); // Returns the login status.3. 로그인체크. 함수의 첫번째파라미터값으로 객체를 받는다
+      });
+    };
+
+    (function (d, s, id) {
+      // Load the SDK asynchronously 1. 페이스북의 sdk를 페이스북 서버로부터 다운로드 받아서 웹페이지로 가져오는 코드
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  </script>
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+  <title>Codebnb🌝</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+  <div id="root"></div>
+  <div id="modal-root"></div>
+</body>
+
+</html>

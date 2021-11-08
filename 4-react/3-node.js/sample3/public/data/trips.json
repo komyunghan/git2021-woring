@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "up_coming": [
+        {
+          "id": 1,
+          "title": "제주바다가보이는 펜션, 공항10분소요 (Seaview/Airport10min)",
+          "image_url": [
+            "https://a0.muscache.com/im/pictures/0300a128-76fb-4f81-ae0c-344ea019323e.jpg?aki_policy=xx_large"
+          ],
+          "start_date": "2020-06-10",
+          "end_date": "2020-06-12",
+          "address": "제주시, 제주특별자치도, 한국"
+        },
+        {
+          "id": 2,
+          "title": "제주도가고싶다",
+          "image_url": [
+            "https://a0.muscache.com/im/pictures/0300a128-76fb-4f81-ae0c-344ea019323e.jpg?aki_policy=xx_large"
+          ],
+          "start_date": "2020-07-11",
+          "end_date": "2020-07-30",
+          "address": "제주시, 제주특별자치도, 한국"
+        },
+        {
+          "id": 2,
+          "title": "제주도가고싶다",
+          "image_url": [
+            "https://a0.muscache.com/im/pictures/0300a128-76fb-4f81-ae0c-344ea019323e.jpg?aki_policy=xx_large"
+          ],
+          "start_date": "2020-07-11",
+          "end_date": "2020-07-30",
+          "address": "제주시, 제주특별자치도, 한국"
+        },
+        {
+          "id": 2,
+          "title": "제주도가고싶다",
+          "image_url": [
+            "https://a0.muscache.com/im/pictures/0300a128-76fb-4f81-ae0c-344ea019323e.jpg?aki_policy=xx_large"
+          ],
+          "start_date": "2020-07-11",
+          "end_date": "2020-07-30",
+          "address": "제주시, 제주특별자치도, 한국"
+        }
+      ],
+      "past_booking": [
+        {
+          "id": 1,
+          "room_id": 1,
+          "host_id": 1,
+          "title": "이거슨 예전 예약이다",
+          "image_url": [
+            "https://a0.muscache.com/im/pictures/0300a128-76fb-4f81-ae0c-344ea019323e.jpg?aki_policy=xx_large"
+          ],
+          "start_date": "2020-06-10",
+          "end_date": "2020-06-12",
+          "address": "제주시, 제주특별자치도, 한국"
+        }
+      ]
+    }
+  ]
+}
