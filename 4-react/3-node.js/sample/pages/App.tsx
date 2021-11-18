@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { useState } from "react";
-import MAP from "./MAP";
-import AppBar from "../components/appbar";
-import SearchBox from "./SearchBox";
-import Link from "next/link";
+import React, { useState, lazy, Suspense } from "react";
+import { useRouter } from "next/router";
+import Map from "../components/Map/Map";
+import AppBar from "../components/appbar/appbar";
+import SearchBar from "../components/searchbox/SearchBar";
+
 
 
 
@@ -22,14 +22,19 @@ function App(props: any) {
     }
   };
 
+  const Router = useRouter();
+
 
 
 
   return (
+
     <div>
       <AppBar />
-      <SearchBox />
-      <MAP />
+      <SearchBar />
+      <Map />
+
+
     </div>
   )
 }

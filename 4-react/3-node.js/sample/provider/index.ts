@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import profileReducer from "../features/profile/profileSlice";
-import listReduer from "./modules/list";
+import bookMarkReduer from "./modules/BookMark";
 // import contactReducer from "../features/contact/contactSlice";
-import progressReducer from "./modules/progress";
 import alertReducer from "./modules/alert";
 
 // 최상위 사가
@@ -22,11 +20,9 @@ export const store = configureStore({
   reducer: {
     // state이름: reducer이름
     // profile state 처리하는 reducer를 등록
-    // profile: profileReducer,
-    // List state를 처리하는 reducer를 등록
-    list: listReduer,
+    // bookMark state를 처리하는 reducer를 등록
+    bookMark: bookMarkReduer,
     // contact: contactReducer,
-    progress: progressReducer,
     alert: alertReducer,
   },
   // redux store(dispatcher)에 미들웨어 적용

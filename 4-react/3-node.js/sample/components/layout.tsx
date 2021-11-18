@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import React from "react";
 import styles from "./layout.module.css";
-import AppBar from "./appbar";
+import AppBar from "./appbar/appbar";
 
 import Progress from "./progress";
 import AlertStack from "./alert/alertStack";
@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>Dangol</title>
+        <title>Myworkspace</title>
       </Head>
       <header>
         <AppBar />

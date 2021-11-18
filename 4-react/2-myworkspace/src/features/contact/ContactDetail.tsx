@@ -4,33 +4,22 @@ import { AppDispatch, RootState } from "../../store";
 import { removeContact } from "./contactSlice";
 
 const ContactDetail = () => {
-  // useParam<타입>(), 매개변수들을 객체화할 형식을 제너릭으로 넣어줌
-  // Generic: <타입> 타입을 매개변수로 넣음
-  // 타입에 따라서 처리를 다르게 하기위함
-  // 객체지향 다형성(poly mophism): 같은 이름의 함수가 내부적으로 처리를 다르게 해줌
   const { id } = useParams<{ id: string }>();
-  console.log(id);
-
-  // 타입 단언을 하지 않으면 추론에 의해서 PhotoItem | undefined 타입이 됨
-  // 타입 단언을 하면 반환 형식을 정의할 수 있음
-  const contactItem = useSelector((state: RootState) =>
-    state.contact.data.find((item) => item.id === +id)
-  ); // 반환형식을 타입 추론으로 처리
-  // ) as contactItem; // 타입 단언 (type assertion)
-  console.log(contactItem);
 
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
-  const handDeleteClick = () => {
-    dispatch(removeContact(+id)); // id값만 넣어서 삭제
-    history.push("/contacts"); // 목록화면으로 이동
-  };
+  const contactItem = useSelector((state: RootState) =>
+    state.contact.data.find((item) => item.id === +id)
+  );
 
   return (
     <div style={{ width: "40vw" }} className="mx-auto">
-      <h2 className="text-center">Contact Detail</h2>
-      {!contactItem && <div className="text-center my-5">데이터가 없습니다.</div>}
+      <h2 className="text-center mb-5">Contact Detail</h2>
+      {!contactItem && (
+        <div className="text-center my-5">데이터가 없습니다.</div>
+      )}
+
       {contactItem && (
         <table className="table">
           <tbody>
@@ -48,12 +37,17 @@ const ContactDetail = () => {
             </tr>
             <tr>
               <th>메모</th>
-              <td>{contactItem.description}</td>
+              <td
+                dangerouslySetInnerHTML={{
+                  __html: contactItem.memo
+                    ? contactItem.memo.replaceAll("\n", "<br>")
+                    : "",
+                }}
+              ></td>
             </tr>
           </tbody>
         </table>
       )}
-
       <div className="d-flex">
         <div style={{ width: "50%" }}>
           <button
@@ -62,7 +56,7 @@ const ContactDetail = () => {
               history.push("/contacts");
             }}
           >
-            <i className="bi bi-grid-3x3-gap me-1"></i>
+            <i className="bi bi-table me-1"></i>
             목록
           </button>
         </div>
@@ -79,7 +73,8 @@ const ContactDetail = () => {
           <button
             className="btn btn-danger"
             onClick={() => {
-              handDeleteClick();
+              dispatch(removeContact(+id));
+              history.push("/contacts");
             }}
           >
             <i className="bi bi-trash me-1" />
